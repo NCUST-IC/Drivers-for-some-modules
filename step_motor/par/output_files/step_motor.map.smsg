@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at step_motor.v(12): always construct contains both blocking and non-blocking assignments

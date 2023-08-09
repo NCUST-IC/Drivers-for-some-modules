@@ -1,0 +1,60 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/Verilog_jiaqi/practice/step_motor/par/simulation/modelsim
+T_opt
+!s110 1691599157
+VzThT=g^JN2l32LFMd9P@^2
+04 15 4 work test_step_motor fast 0
+=1-902e166433e1-64d3c134-2e5-588
+o-quiet -auto_acc_if_foreign -work work -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work +acc
+n@_opt
+OL;O;10.4;61
+vstep_motor
+!s110 1691599154
+!i10b 1
+!s100 6:2a?UcE:1]Jm94;oz@[c3
+I:W5jlmGoIT<79>IWbU@k81
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1691599109
+8E:/Verilog_jiaqi/practice/step_motor/rtl/step_motor.v
+FE:/Verilog_jiaqi/practice/step_motor/rtl/step_motor.v
+L0 1
+Z2 OL;L;10.4;61
+r1
+!s85 0
+31
+!s108 1691599154.835000
+!s107 E:/Verilog_jiaqi/practice/step_motor/rtl/step_motor.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Verilog_jiaqi/practice/step_motor/rtl|E:/Verilog_jiaqi/practice/step_motor/rtl/step_motor.v|
+!i113 0
+Z3 o-vlog01compat -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+!s92 -vlog01compat -work work +incdir+E:/Verilog_jiaqi/practice/step_motor/rtl -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+vtest_step_motor
+!s110 1691599155
+!i10b 1
+!s100 0[6Tb8lMM:I5lG0d@W`>10
+I8;>A5cGgJe`_CAoILz^jz2
+R1
+R0
+w1691598527
+8E:/Verilog_jiaqi/practice/step_motor/par/../sim/test_step_motor.v
+FE:/Verilog_jiaqi/practice/step_motor/par/../sim/test_step_motor.v
+L0 1
+R2
+r1
+!s85 0
+31
+!s108 1691599155.164000
+!s107 E:/Verilog_jiaqi/practice/step_motor/par/../sim/test_step_motor.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Verilog_jiaqi/practice/step_motor/par/../sim|E:/Verilog_jiaqi/practice/step_motor/par/../sim/test_step_motor.v|
+!i113 0
+R3
+!s92 -vlog01compat -work work +incdir+E:/Verilog_jiaqi/practice/step_motor/par/../sim -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
