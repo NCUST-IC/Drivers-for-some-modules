@@ -1,0 +1,12 @@
+
+State Machine - |ms53l|dist_calculate:dist_calculate_u|state
+Name state.length state.function3 state.function2 state.function1 state.addr2 state.addr1 state.header2 state.0000 state.receive_data 
+state.0000 0 0 0 0 0 0 0 0 0 
+state.header2 0 0 0 0 0 0 1 1 0 
+state.addr1 0 0 0 0 0 1 0 1 0 
+state.addr2 0 0 0 0 1 0 0 1 0 
+state.function1 0 0 0 1 0 0 0 1 0 
+state.function2 0 0 1 0 0 0 0 1 0 
+state.function3 0 1 0 0 0 0 0 1 0 
+state.length 1 0 0 0 0 0 0 1 0 
+state.receive_data 0 0 0 0 0 0 0 1 1 

@@ -1,0 +1,456 @@
+Analysis & Synthesis report for ms53l
+Thu Aug 10 01:30:02 2023
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |ms53l
+ 14. Parameter Settings for User Entity Instance: uart_recv:u_uart_recv
+ 15. Parameter Settings for User Entity Instance: uart_send:u_uart_send
+ 16. Parameter Settings for User Entity Instance: seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst
+ 17. Port Connectivity Checks: "seg_595_dynamic:seg_595_dynamic_inst"
+ 18. Port Connectivity Checks: "uart_recv:u_uart_recv"
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Aug 10 01:30:02 2023       ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
+; Revision Name                      ; ms53l                                       ;
+; Top-level Entity Name              ; ms53l                                       ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 438                                         ;
+;     Total combinational functions  ; 366                                         ;
+;     Dedicated logic registers      ; 282                                         ;
+; Total registers                    ; 282                                         ;
+; Total pins                         ; 12                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE10F17C8       ;                    ;
+; Top-level entity name                                                      ; ms53l              ; ms53l              ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-12        ;   0.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                            ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                              ; Library ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------+---------+
+; ../rtl/seg/seg_dynamic.v         ; yes             ; User Verilog HDL File  ; E:/Verilog_jiaqi/practice/ms53l/rtl/seg/seg_dynamic.v     ;         ;
+; ../rtl/seg/seg_595_dynamic.v     ; yes             ; User Verilog HDL File  ; E:/Verilog_jiaqi/practice/ms53l/rtl/seg/seg_595_dynamic.v ;         ;
+; ../rtl/seg/hc595_ctrl.v          ; yes             ; User Verilog HDL File  ; E:/Verilog_jiaqi/practice/ms53l/rtl/seg/hc595_ctrl.v      ;         ;
+; ../rtl/seg/bcd_8421.v            ; yes             ; User Verilog HDL File  ; E:/Verilog_jiaqi/practice/ms53l/rtl/seg/bcd_8421.v        ;         ;
+; ../rtl/uart_send.v               ; yes             ; User Verilog HDL File  ; E:/Verilog_jiaqi/practice/ms53l/rtl/uart_send.v           ;         ;
+; ../rtl/uart_recv.v               ; yes             ; User Verilog HDL File  ; E:/Verilog_jiaqi/practice/ms53l/rtl/uart_recv.v           ;         ;
+; ../rtl/reg_7Byte.v               ; yes             ; User Verilog HDL File  ; E:/Verilog_jiaqi/practice/ms53l/rtl/reg_7Byte.v           ;         ;
+; ../rtl/ms53l.v                   ; yes             ; User Verilog HDL File  ; E:/Verilog_jiaqi/practice/ms53l/rtl/ms53l.v               ;         ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 438         ;
+;                                             ;             ;
+; Total combinational functions               ; 366         ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 169         ;
+;     -- 3 input functions                    ; 83          ;
+;     -- <=2 input functions                  ; 114         ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 299         ;
+;     -- arithmetic mode                      ; 67          ;
+;                                             ;             ;
+; Total registers                             ; 282         ;
+;     -- Dedicated logic registers            ; 282         ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 12          ;
+; Embedded Multiplier 9-bit elements          ; 0           ;
+; Maximum fan-out node                        ; rst_n~input ;
+; Maximum fan-out                             ; 283         ;
+; Total fan-out                               ; 2174        ;
+; Average fan-out                             ; 3.24        ;
++---------------------------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                    ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                             ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------+--------------+
+; |ms53l                                    ; 366 (1)           ; 282 (3)      ; 0           ; 0            ; 0       ; 0         ; 12   ; 0            ; |ms53l                                                                                          ; work         ;
+;    |reg_7Byte:reg_7Byte_u|                ; 46 (46)           ; 39 (39)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ms53l|reg_7Byte:reg_7Byte_u                                                                    ; work         ;
+;    |seg_595_dynamic:seg_595_dynamic_inst| ; 192 (0)           ; 147 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst                                                     ; work         ;
+;       |hc595_ctrl:hc595_ctrl_inst|        ; 20 (20)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|hc595_ctrl:hc595_ctrl_inst                          ; work         ;
+;       |seg_dynamic:seg_dynamic_inst|      ; 172 (83)          ; 138 (65)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst                        ; work         ;
+;          |bcd_8421:bcd_8421_inst|         ; 89 (89)           ; 73 (73)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|bcd_8421:bcd_8421_inst ; work         ;
+;    |uart_recv:u_uart_recv|                ; 75 (75)           ; 62 (62)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ms53l|uart_recv:u_uart_recv                                                                    ; work         ;
+;    |uart_send:u_uart_send|                ; 52 (52)           ; 31 (31)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ms53l|uart_send:u_uart_send                                                                    ; work         ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                         ;
++-----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+; Register name                                                                                       ; Reason for Removal                                                                   ;
++-----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+; reg_7Byte:reg_7Byte_u|data_r[7]                                                                     ; Stuck at GND due to stuck port data_in                                               ;
+; reg_7Byte:reg_7Byte_u|tx_data[7]                                                                    ; Stuck at GND due to stuck port data_in                                               ;
+; uart_send:u_uart_send|tx_data[7]                                                                    ; Stuck at GND due to stuck port data_in                                               ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|dot_disp                          ; Stuck at VCC due to stuck port data_in                                               ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|seg[7]                            ; Stuck at VCC due to stuck port data_in                                               ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|bcd_8421:bcd_8421_inst|shift_flag ; Merged with seg_595_dynamic:seg_595_dynamic_inst|hc595_ctrl:hc595_ctrl_inst|cnt_4[0] ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|cnt_1ms[0]                        ; Merged with seg_595_dynamic:seg_595_dynamic_inst|hc595_ctrl:hc595_ctrl_inst|cnt_4[0] ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|cnt_1ms[1]                        ; Merged with seg_595_dynamic:seg_595_dynamic_inst|hc595_ctrl:hc595_ctrl_inst|cnt_4[1] ;
+; Total Number of Removed Registers = 8                                                               ;                                                                                      ;
++-----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                       ;
++----------------------------------------------------------------------------+---------------------------+--------------------------------------------------------------------------+
+; Register name                                                              ; Reason for Removal        ; Registers Removed due to This Register                                   ;
++----------------------------------------------------------------------------+---------------------------+--------------------------------------------------------------------------+
+; reg_7Byte:reg_7Byte_u|data_r[7]                                            ; Stuck at GND              ; reg_7Byte:reg_7Byte_u|tx_data[7], uart_send:u_uart_send|tx_data[7]       ;
+;                                                                            ; due to stuck port data_in ;                                                                          ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|dot_disp ; Stuck at VCC              ; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|seg[7] ;
+;                                                                            ; due to stuck port data_in ;                                                                          ;
++----------------------------------------------------------------------------+---------------------------+--------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 282   ;
+; Number of registers using Synchronous Clear  ; 37    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 282   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 128   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                       ;
++--------------------------------------------------------------------------+---------+
+; Inverted Register                                                        ; Fan out ;
++--------------------------------------------------------------------------+---------+
+; uart_send:u_uart_send|uart_txd                                           ; 2       ;
+; led_out~reg0                                                             ; 2       ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|seg[1] ; 1       ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|seg[0] ; 1       ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|seg[3] ; 1       ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|seg[2] ; 1       ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|seg[5] ; 1       ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|seg[4] ; 1       ;
+; seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|seg[6] ; 1       ;
+; Total number of inverted registers = 9                                   ;         ;
++--------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|hc595_ctrl:hc595_ctrl_inst|cnt_bit[2]                              ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ms53l|uart_send:u_uart_send|tx_cnt[0]                                                                         ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |ms53l|uart_send:u_uart_send|tx_data[0]                                                                        ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|sel_reg[2]                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |ms53l|reg_7Byte:reg_7Byte_u|tx_ready                                                                          ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|bcd_8421:bcd_8421_inst|data_shift[19] ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|bcd_8421:bcd_8421_inst|data_shift[13] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ms53l|uart_recv:u_uart_recv|cnt_data[3]                                                                       ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ms53l|uart_recv:u_uart_recv|rx_cnt[3]                                                                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ms53l|uart_send:u_uart_send|clk_cnt[3]                                                                        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ms53l|uart_recv:u_uart_recv|clk_cnt[0]                                                                        ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; Yes        ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|data_disp[0]                          ;
+; 32:1               ; 7 bits    ; 147 LEs       ; 49 LEs               ; 98 LEs                 ; Yes        ; |ms53l|reg_7Byte:reg_7Byte_u|data_r[6]                                                                         ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|bcd_8421:bcd_8421_inst|data_shift[43] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|bcd_8421:bcd_8421_inst|data_shift[38] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|bcd_8421:bcd_8421_inst|data_shift[35] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|bcd_8421:bcd_8421_inst|data_shift[31] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|bcd_8421:bcd_8421_inst|data_shift[24] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |ms53l|seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|bcd_8421:bcd_8421_inst|data_shift[20] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |ms53l ;
++----------------+----------+-------------------------------------------+
+; Parameter Name ; Value    ; Type                                      ;
++----------------+----------+-------------------------------------------+
+; CLK_FREQ       ; 50000000 ; Signed Integer                            ;
+; UART_BPS       ; 115200   ; Signed Integer                            ;
++----------------+----------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_recv:u_uart_recv ;
++----------------+----------+----------------------------------------+
+; Parameter Name ; Value    ; Type                                   ;
++----------------+----------+----------------------------------------+
+; CLK_FREQ       ; 50000000 ; Signed Integer                         ;
+; UART_BPS       ; 115200   ; Signed Integer                         ;
++----------------+----------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_send:u_uart_send ;
++----------------+----------+----------------------------------------+
+; Parameter Name ; Value    ; Type                                   ;
++----------------+----------+----------------------------------------+
+; CLK_FREQ       ; 50000000 ; Signed Integer                         ;
+; UART_BPS       ; 115200   ; Signed Integer                         ;
++----------------+----------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst ;
++----------------+------------------+----------------------------------------------------------------------------+
+; Parameter Name ; Value            ; Type                                                                       ;
++----------------+------------------+----------------------------------------------------------------------------+
+; CNT_MAX        ; 1100001101001111 ; Unsigned Binary                                                            ;
++----------------+------------------+----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "seg_595_dynamic:seg_595_dynamic_inst"                                                                                                             ;
++--------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                                                                                                          ;
++--------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; data   ; Input ; Warning  ; Input port expression (16 bits) is smaller than the input port (20 bits) it drives.  Extra input bit(s) "data[19..16]" will be connected to GND. ;
+; point  ; Input ; Info     ; Stuck at GND                                                                                                                                     ;
+; seg_en ; Input ; Info     ; Stuck at VCC                                                                                                                                     ;
+; sign   ; Input ; Info     ; Stuck at GND                                                                                                                                     ;
++--------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "uart_recv:u_uart_recv"                                                                   ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; uart_done ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; uart_data ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Full Version
+    Info: Processing started: Thu Aug 10 01:29:56 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ms53l -c ms53l
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Warning (12019): Can't analyze file -- file ../rtl/uart_tx.v is missing
+Info (12021): Found 1 design units, including 1 entities, in source file /verilog_jiaqi/practice/ms53l/rtl/seg/seg_dynamic.v
+    Info (12023): Found entity 1: seg_dynamic
+Info (12021): Found 1 design units, including 1 entities, in source file /verilog_jiaqi/practice/ms53l/rtl/seg/seg_595_dynamic.v
+    Info (12023): Found entity 1: seg_595_dynamic
+Info (12021): Found 1 design units, including 1 entities, in source file /verilog_jiaqi/practice/ms53l/rtl/seg/hc595_ctrl.v
+    Info (12023): Found entity 1: hc595_ctrl
+Info (12021): Found 1 design units, including 1 entities, in source file /verilog_jiaqi/practice/ms53l/rtl/seg/bcd_8421.v
+    Info (12023): Found entity 1: bcd_8421
+Info (12021): Found 1 design units, including 1 entities, in source file /verilog_jiaqi/practice/ms53l/rtl/uart_send.v
+    Info (12023): Found entity 1: uart_send
+Info (12021): Found 1 design units, including 1 entities, in source file /verilog_jiaqi/practice/ms53l/rtl/uart_recv.v
+    Info (12023): Found entity 1: uart_recv
+Info (12021): Found 1 design units, including 1 entities, in source file /verilog_jiaqi/practice/ms53l/rtl/reg_7byte.v
+    Info (12023): Found entity 1: reg_7Byte
+Info (12021): Found 1 design units, including 1 entities, in source file /verilog_jiaqi/practice/ms53l/rtl/ms53l.v
+    Info (12023): Found entity 1: ms53l
+Info (12021): Found 1 design units, including 1 entities, in source file /verilog_jiaqi/practice/ms53l/rtl/dist_calculate.v
+    Info (12023): Found entity 1: dist_calculate
+Warning (10236): Verilog HDL Implicit Net warning at uart_send.v(32): created implicit net for "en_flag"
+Info (12127): Elaborating entity "ms53l" for the top level hierarchy
+Info (12128): Elaborating entity "uart_recv" for hierarchy "uart_recv:u_uart_recv"
+Info (12128): Elaborating entity "uart_send" for hierarchy "uart_send:u_uart_send"
+Info (12128): Elaborating entity "reg_7Byte" for hierarchy "reg_7Byte:reg_7Byte_u"
+Info (12128): Elaborating entity "seg_595_dynamic" for hierarchy "seg_595_dynamic:seg_595_dynamic_inst"
+Info (12128): Elaborating entity "seg_dynamic" for hierarchy "seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst"
+Info (12128): Elaborating entity "bcd_8421" for hierarchy "seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|bcd_8421:bcd_8421_inst"
+Info (12128): Elaborating entity "hc595_ctrl" for hierarchy "seg_595_dynamic:seg_595_dynamic_inst|hc595_ctrl:hc595_ctrl_inst"
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "uart_rx"
+Info (21057): Implemented 453 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 7 output pins
+    Info (21061): Implemented 441 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4663 megabytes
+    Info: Processing ended: Thu Aug 10 01:30:02 2023
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:06
+
+

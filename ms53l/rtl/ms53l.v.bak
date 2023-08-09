@@ -1,0 +1,25 @@
+module ms531(
+	input			clk,
+	input			rst_n,
+
+	input			key,
+	input			uart_rx,			//connect with  tx
+	output		uart_tx,			//connect with  rx
+	//MS53L1M
+	input			uart_rx_ms53l,
+	output		uart_tx_ms531,
+
+	    //seg_led interface
+    output    [5:0]  seg_sel  ,       // 数码管位选信号
+    output    [7:0]  seg_led  ,       // 数码管段选信号
+
+);
+
+
+
+
+
+
+
+endmodule
+
