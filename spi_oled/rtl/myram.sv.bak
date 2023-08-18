@@ -1,0 +1,18 @@
+module myram(
+	input		clk,
+	input		write_addr,
+	input		write_data,
+	
+	output	read_addr,
+	output	read_data
+);
+
+//存储128*8页 个byte（8bit）
+reg	[7:0]	memory	[1023:0];
+
+always@(posedge clk)
+	if()
+
+
+
+endmodule

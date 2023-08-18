@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="spi_oled">
+		<CBX_INST_ENTRY INSTANCE_NAME="|spi_oled|myram:myram_m0|altsyncram:memory_rtl_0" CBX_FILE_NAME="altsyncram_2dl1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

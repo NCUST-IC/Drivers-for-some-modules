@@ -1,0 +1,246 @@
+//------------------------------------------------------------------------------
+// ssd1306_ctrl.sv
+// 
+//------------------------------------------------------------------------------
+//
+//	 * state_main -----------------
+//			* state_sub ----------------
+//
+// 一、先对OLED进行复位
+//			1、oled_rst拉低100ms
+//			2、oled_rst拉高100ms
+//			3、oled_rst保持高100ms
+// 二、初始化
+//			1、发送初始化指令（仿照单片机）
+// 三、写操作
+//			1、写页地址，对那页写
+//			2、写数据
+// 四、忙状态
+//			1数据总线繁忙保持，空闲返回发送数据
+
+
+module ssd1306_ctrl#(
+	parameter CLK_FRE = 50
+	) (
+	input 			  clk,rst_n,
+
+	output [9:0] read_addr,
+	input  [7:0] read_data,
+
+	output reg		  oled_rst  = 'd0,		//低复位
+	input 			  send_busy ,	
+	output reg 		  send_en = 'd0,   	
+	output reg  	  send_dc = 'd0,   	
+	output reg [ 7:0] send_data = 'd0	
+);
+
+
+parameter	state_RESET = 3'd0,
+				state_INIT  = 3'd1,
+				state_WRITE = 3'd2,
+				state_BUSY  = 3'd3;
+				
+parameter	DELAY_100MS = 5_000_000;
+				
+parameter OLED_CMD    = 0;			//写指令
+parameter OLED_DAT    = 1;			//写数据
+
+parameter	NUM_CMD_INIT = 27;	//初始化指令数
+parameter	NUM_PAGR = 8;			//ssd1302分成8页
+parameter	NUM_PAGE_SEG = 128;	//每页128byte数据
+parameter	NUM_CMD_ADDR = 3;		//设置发送地址
+
+
+reg [26:0][ 7:0] init_cmd = {
+	//22+左上XY+左下XY (局部刷新)
+	//29 2A 2E 2F 连续水平 垂直 滚动（开始，暂停）局部
+	 8'hAE,//(固定命令 关闭屏幕)----turn off oled panel
+	 8'h00,//(设置显示行列XY起始点）--set low column address
+	 8'h10,//(设置显示行列XY起始点）--set high column address
+	 8'h40,//(设置上下偏移地址，默认0不偏移)--set start line address  Set Mapping RAM Display Start Line (0x00~0x3F)
+	 8'h81,//(设置显示对比度)--set contrast control register
+	 8'hFF,//(设置显示亮度)--set SEG Output Current Brightness
+	 8'hA1,//(设置行列地址映射)--Set SEG/Column Mapping     	    0xa0左右反置 0xa1正常
+	 8'hC8,//(设置行列输出扫描方向)--Set COM/Row Scan Direction   	0xc0上下反置 0xc8正常
+	 8'hA6,//(设置点亮为1 不亮为0，反过来就是 设置A7)--set normal display, reverse is A7
+	 8'hA8,//(固定命令,行列复用)--set multiplex ratio(1 to 64)
+	 8'h3f,//--1/64 duty
+	 8'hD3,//(设置画面上下偏移)-set display offset	Shift Mapping RAM Counter (0x00~0x3F)
+	 8'h00,//(设置画面上下偏移)-not offset
+	 8'hd5,//(设置时钟)--set display clock divide ratio/oscillator frequency
+	 8'h80,//(设置时钟)--set divide ratio, Set Clock as 100 Frames/Sec
+	 8'hD9,//(固定命令)--set pre-charge period
+	 8'hF1,//Set Pre-Charge as 15 Clocks & Discharge as 1 Clock
+	 8'hDA,//(设置行列和半区排列)--set com pins hardware configuration
+	 8'h12,//(设置行列和半区排列)
+	 8'hDB,//(固定命令)--set vcomh
+	 8'h40,//(固定命令) Set VCOM Deselect Level
+	 8'h20,//(设置扫描方式)-Set Page Addressing Mode (0x00/0x01/0x02)
+	 8'h00,//(设置扫描方式)
+	 8'h8D,//--set Charge Pump enable/disable
+	 8'h14,//--set(0x10) disable
+	 8'hA4,//(设置显存显示) Disable Entire Display On (0xa4/0xa5)
+	 8'hAF };//(固定命令 开启屏幕)----turn on oled panel
+
+//************************************************************
+//					 |--------------------------->*-------*
+//		  page	***									*-1byte-*
+// seg	0		*1*	2		3	...	127	   *-------*
+//			1		***								
+//			2
+//			...
+//			7
+//
+//************************************************************
+
+//page 		b0 -> b7
+//Set the lower start column address of pointer by command 00h~0Fh
+//Set the upper start column address of pointer by command 10h~1Fh
+reg [ 2:0][ 7:0] set_cmd 	 = {8'hb0,8'h00,8'h10};// 左上角
+//************************************************************
+//寻址方式
+//			0	
+//			1
+//			2
+//		  ...
+//			
+//
+//************************************************************
+
+
+
+reg	[2:0]		state_main,state_sub;
+reg	[2:0]		state_save;
+reg	[23:0]	cnt_delay = 'd0;
+
+reg	[10:0]	send_cnt;
+reg	[2:0]		page_cnt;
+
+//从ram中读取数据
+							//选页数			选地址
+assign read_addr = {page_cnt[2:0],send_cnt[6:0]};
+
+always@(posedge clk or negedge rst_n) begin
+	if(!rst_n)begin 
+		state_main <= 0;
+		state_sub  <= 0;
+	end
+	else case(state_main)
+		state_RESET:
+			case(state_sub)
+				3'd0:
+					if(cnt_delay == DELAY_100MS)begin
+						oled_rst <= 'b0;
+						cnt_delay <= 'd0;
+						state_sub ++;
+					end
+					else begin 
+						oled_rst <= 'b1;
+						cnt_delay ++;
+					end
+				3'd1:
+					if(cnt_delay == DELAY_100MS)begin
+						oled_rst <= 'b1;
+						cnt_delay <= 'd0;
+						state_sub ++;
+					end
+					else  
+						cnt_delay ++;
+				3'd2:
+					if(cnt_delay == DELAY_100MS)begin
+						cnt_delay <= 'd0;
+						state_sub <= 0;
+						send_cnt <= 0;
+						state_main ++;
+					end
+					else begin 
+						cnt_delay ++;
+					end
+			endcase
+		state_INIT:
+			if(send_cnt == NUM_CMD_INIT) begin
+				send_cnt <= 'd0;
+				send_en  <= 'b0;
+				state_main ++;
+			end
+			else if(!send_busy) begin	//空闲循环发送
+				send_en <= 'b1;
+				send_dc <= OLED_CMD;
+				send_data <= init_cmd[NUM_CMD_INIT- 1 -send_cnt];
+				send_cnt ++;
+				//保存状态，空闲发送
+				state_save <= state_main;
+				state_main <= state_BUSY;
+			end
+			else
+				send_en <= 'b0;
+		state_WRITE:
+			case(state_sub)
+				3'd0:		//写页地址
+				/*
+					if(page_cnt==NUM_PAGR) begin
+						state_main <= 'd0;
+						state_sub  <= 'd0;
+						if(send_cnt==NUM_CMD_ADDR) begin	//发一次页地址
+							send_cnt <= 'd0;
+							send_en  <= 'b0;
+							page_cnt ++;
+							state_sub ++;
+						end
+					end
+				*/
+					if (send_cnt == NUM_CMD_ADDR) begin//初始化完成
+						send_en <= 0;
+						send_cnt <=0;
+						if(page_cnt == NUM_PAGR)begin 
+							send_cnt <= 0;
+							page_cnt <= 0;
+							state_main ++;
+							state_sub <= 0;
+						end
+						else
+							state_sub ++;
+					end
+					else if(!send_busy) begin
+						send_en <= 'b1;
+						send_dc <= OLED_CMD;
+						send_data <= (send_cnt=='d0) ? set_cmd[NUM_CMD_ADDR- 1 -send_cnt] + page_cnt
+						: set_cmd[NUM_CMD_ADDR- 1 -send_cnt];
+						send_cnt ++;
+						//保存状态，空闲发送
+						state_save <= state_main;
+						state_main <= state_BUSY;
+					end
+					else
+						send_en <= 'b0;
+				3'd1:		//写数据
+					if(send_cnt==NUM_PAGE_SEG) begin
+						send_cnt <= 'd0;
+						send_en  <= 'b0;
+						page_cnt ++;
+						state_sub ++;
+					end
+					else if(!send_busy) begin
+						send_en <= 'b1;
+						send_dc <= OLED_DAT;
+						send_data <= read_data;
+						send_cnt ++;
+						//保存状态，空闲发送
+						state_save <= state_main;
+						state_main <= state_BUSY;
+					end
+					else
+						send_en <= 'b0;
+			endcase
+		state_BUSY:			//数据线繁忙等待
+			if(send_busy) state_main <= state_save;
+
+		default : begin
+			state_main <= 'd0;
+			state_sub  <= 'd0;
+		end
+	endcase
+end
+
+
+endmodule

@@ -1,0 +1,58 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dF:/spi_oled/par/simulation/modelsim
+vmyram
+Z1 DXx6 sv_std 3 std 0 22 WmjPaeP=7F5?QFXzJ>D[Q2
+Z2 !s110 1692121776
+!i10b 1
+!s100 if^mGdY62Qf>@?geZHnTR3
+I1JG8<cLNi<gSoib5Qz[iA1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 myram_sv_unit
+S1
+R0
+w1692121117
+8F:/spi_oled/rtl/myram.sv
+FF:/spi_oled/rtl/myram.sv
+L0 1
+Z4 OL;L;10.4;61
+r1
+!s85 0
+31
+!s108 1692121776.632000
+!s107 F:/spi_oled/rtl/myram.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+F:/spi_oled/rtl|F:/spi_oled/rtl/myram.sv|
+!i113 0
+Z5 o-sv -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+!s92 -sv -work work +incdir+F:/spi_oled/rtl -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+vmyram_tb
+R1
+R2
+!i10b 1
+!s100 W9b;cjD>;4Xi4:c?mVHDD0
+IlHX7X<e8]X;nCB<fFQz2l3
+R3
+!s105 myram_tb_sv_unit
+S1
+R0
+w1692121730
+8F:/spi_oled/par/../sim/myram_tb.sv
+FF:/spi_oled/par/../sim/myram_tb.sv
+L0 2
+R4
+r1
+!s85 0
+31
+!s108 1692121776.908000
+!s107 F:/spi_oled/par/../sim/myram_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+F:/spi_oled/par/../sim|F:/spi_oled/par/../sim/myram_tb.sv|
+!i113 0
+R5
+!s92 -sv -work work +incdir+F:/spi_oled/par/../sim -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact

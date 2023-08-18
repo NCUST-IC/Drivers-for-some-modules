@@ -1,0 +1,675 @@
+Analysis & Synthesis report for spi_oled
+Fri Aug 18 22:42:16 2023
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Registers Packed Into Inferred Megafunctions
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Source assignments for myram:myram_m0|altsyncram:memory_rtl_0|altsyncram_2dl1:auto_generated
+ 15. Parameter Settings for User Entity Instance: Top-level Entity: |spi_oled
+ 16. Parameter Settings for User Entity Instance: ssd1306_ctrl:ssd1306_ctrl_u0
+ 17. Parameter Settings for User Entity Instance: spi_master:my_spi_master
+ 18. Parameter Settings for User Entity Instance: spi_master:my_spi_master|edge_detect:ed_spi_clk
+ 19. Parameter Settings for User Entity Instance: spi_master:my_spi_master|edge_detect:ed_cmds[0]
+ 20. Parameter Settings for User Entity Instance: spi_master:my_spi_master|edge_detect:ed_cmds[1]
+ 21. Parameter Settings for User Entity Instance: spi_master:my_spi_master|reverse_vector:reverse_mosi_data
+ 22. Parameter Settings for User Entity Instance: spi_master:my_spi_master|reverse_vector:reverse_miso_data
+ 23. Parameter Settings for Inferred Entity Instance: myram:myram_m0|altsyncram:memory_rtl_0
+ 24. altsyncram Parameter Settings by Entity Instance
+ 25. Port Connectivity Checks: "spi_master:my_spi_master|edge_detect:ed_cmds[1]"
+ 26. Port Connectivity Checks: "spi_master:my_spi_master|edge_detect:ed_cmds[0]"
+ 27. Port Connectivity Checks: "spi_master:my_spi_master|edge_detect:ed_spi_clk"
+ 28. Port Connectivity Checks: "spi_master:my_spi_master"
+ 29. Port Connectivity Checks: "myram:myram_m0"
+ 30. Elapsed Time Per Partition
+ 31. Analysis & Synthesis Messages
+ 32. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Aug 18 22:42:16 2023       ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
+; Revision Name                      ; spi_oled                                    ;
+; Top-level Entity Name              ; spi_oled                                    ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 198                                         ;
+;     Total combinational functions  ; 195                                         ;
+;     Dedicated logic registers      ; 88                                          ;
+; Total registers                    ; 88                                          ;
+; Total pins                         ; 7                                           ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 8,192                                       ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE10F17C8       ;                    ;
+; Top-level entity name                                                      ; spi_oled           ; spi_oled           ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-12        ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                     ;
++----------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------+---------+
+; File Name with User-Entered Path       ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                  ; Library ;
++----------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------+---------+
+; ../rtl/ssd1306_ctrl.sv                 ; yes             ; User SystemVerilog HDL File                           ; F:/spi_oled/rtl/ssd1306_ctrl.sv                               ;         ;
+; ../rtl/spi_master.sv                   ; yes             ; User SystemVerilog HDL File                           ; F:/spi_oled/rtl/spi_master.sv                                 ;         ;
+; ../rtl/reverse_vector.sv               ; yes             ; User SystemVerilog HDL File                           ; F:/spi_oled/rtl/reverse_vector.sv                             ;         ;
+; ../rtl/edge_detect.sv                  ; yes             ; User SystemVerilog HDL File                           ; F:/spi_oled/rtl/edge_detect.sv                                ;         ;
+; ../rtl/spi_oled.v                      ; yes             ; User Verilog HDL File                                 ; F:/spi_oled/rtl/spi_oled.v                                    ;         ;
+; ../rtl/myram.sv                        ; yes             ; User SystemVerilog HDL File                           ; F:/spi_oled/rtl/myram.sv                                      ;         ;
+; /spi_oled/rtl/xin.txt                  ; yes             ; Auto-Found File                                       ; /spi_oled/rtl/xin.txt                                         ;         ;
+; altsyncram.tdf                         ; yes             ; Megafunction                                          ; d:/fpga/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc                  ; yes             ; Megafunction                                          ; d:/fpga/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                            ; yes             ; Megafunction                                          ; d:/fpga/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                         ; yes             ; Megafunction                                          ; d:/fpga/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal131.inc                         ; yes             ; Megafunction                                          ; d:/fpga/quartus/libraries/megafunctions/aglobal131.inc        ;         ;
+; a_rdenreg.inc                          ; yes             ; Megafunction                                          ; d:/fpga/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                             ; yes             ; Megafunction                                          ; d:/fpga/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                             ; yes             ; Megafunction                                          ; d:/fpga/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                           ; yes             ; Megafunction                                          ; d:/fpga/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_2dl1.tdf                 ; yes             ; Auto-Generated Megafunction                           ; F:/spi_oled/par/db/altsyncram_2dl1.tdf                        ;         ;
+; db/spi_oled.ram0_myram_7031274.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; F:/spi_oled/par/db/spi_oled.ram0_myram_7031274.hdl.mif        ;         ;
++----------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 198       ;
+;                                             ;           ;
+; Total combinational functions               ; 195       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 81        ;
+;     -- 3 input functions                    ; 47        ;
+;     -- <=2 input functions                  ; 67        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 146       ;
+;     -- arithmetic mode                      ; 49        ;
+;                                             ;           ;
+; Total registers                             ; 88        ;
+;     -- Dedicated logic registers            ; 88        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 7         ;
+; Total memory bits                           ; 8192      ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 96        ;
+; Total fan-out                               ; 997       ;
+; Average fan-out                             ; 3.27      ;
++---------------------------------------------+-----------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                    ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                             ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------+--------------+
+; |spi_oled                                 ; 195 (19)          ; 88 (11)      ; 8192        ; 0            ; 0       ; 0         ; 7    ; 0            ; |spi_oled                                                                       ; work         ;
+;    |myram:myram_m0|                       ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |spi_oled|myram:myram_m0                                                        ; work         ;
+;       |altsyncram:memory_rtl_0|           ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |spi_oled|myram:myram_m0|altsyncram:memory_rtl_0                                ; work         ;
+;          |altsyncram_2dl1:auto_generated| ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |spi_oled|myram:myram_m0|altsyncram:memory_rtl_0|altsyncram_2dl1:auto_generated ; work         ;
+;    |spi_master:my_spi_master|             ; 40 (39)           ; 22 (20)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |spi_oled|spi_master:my_spi_master                                              ; work         ;
+;       |edge_detect:ed_cmds[1]|            ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |spi_oled|spi_master:my_spi_master|edge_detect:ed_cmds[1]                       ; work         ;
+;       |edge_detect:ed_spi_clk|            ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |spi_oled|spi_master:my_spi_master|edge_detect:ed_spi_clk                       ; work         ;
+;    |ssd1306_ctrl:ssd1306_ctrl_u0|         ; 136 (136)         ; 55 (55)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |spi_oled|ssd1306_ctrl:ssd1306_ctrl_u0                                          ; work         ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                       ;
++----------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+----------------------------------------+
+; Name                                                                             ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                                    ;
++----------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+----------------------------------------+
+; myram:myram_m0|altsyncram:memory_rtl_0|altsyncram_2dl1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 1024         ; 8            ; 1024         ; 8            ; 8192 ; db/spi_oled.ram0_myram_7031274.hdl.mif ;
++----------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+----------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                               ;
++---------------------------------------------------------+----------------------------------------+
+; Register name                                           ; Reason for Removal                     ;
++---------------------------------------------------------+----------------------------------------+
+; spi_master:my_spi_master|edge_detect:ed_cmds[0]|in_d[0] ; Stuck at GND due to stuck port data_in ;
+; spi_master:my_spi_master|rd_nwr                         ; Stuck at GND due to stuck port data_in ;
+; ssd1306_ctrl:ssd1306_ctrl_u0|state_sub[2]               ; Stuck at GND due to stuck port data_in ;
+; ssd1306_ctrl:ssd1306_ctrl_u0|state_save[2]              ; Stuck at GND due to stuck port data_in ;
+; ssd1306_ctrl:ssd1306_ctrl_u0|state_main[2]              ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 5                   ;                                        ;
++---------------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                  ;
++---------------------------------------------------------+---------------------------+----------------------------------------+
+; Register name                                           ; Reason for Removal        ; Registers Removed due to This Register ;
++---------------------------------------------------------+---------------------------+----------------------------------------+
+; spi_master:my_spi_master|edge_detect:ed_cmds[0]|in_d[0] ; Stuck at GND              ; spi_master:my_spi_master|rd_nwr        ;
+;                                                         ; due to stuck port data_in ;                                        ;
++---------------------------------------------------------+---------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 88    ;
+; Number of registers using Synchronous Clear  ; 29    ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 6     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 55    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                        ;
++--------------------------------+-----------------------------+------+
+; Register Name                  ; Megafunction                ; Type ;
++--------------------------------+-----------------------------+------+
+; myram:myram_m0|read_data[0..7] ; myram:myram_m0|memory_rtl_0 ; RAM  ;
++--------------------------------+-----------------------------+------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+; 7:1                ; 24 bits   ; 96 LEs        ; 24 LEs               ; 72 LEs                 ; Yes        ; |spi_oled|ssd1306_ctrl:ssd1306_ctrl_u0|cnt_delay[6]  ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |spi_oled|spi_master:my_spi_master|mosi_data_buf[4]  ;
+; 14:1               ; 2 bits    ; 18 LEs        ; 2 LEs                ; 16 LEs                 ; Yes        ; |spi_oled|ssd1306_ctrl:ssd1306_ctrl_u0|state_save[0] ;
+; 14:1               ; 11 bits   ; 99 LEs        ; 11 LEs               ; 88 LEs                 ; Yes        ; |spi_oled|ssd1306_ctrl:ssd1306_ctrl_u0|send_cnt[0]   ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 4 LEs                ; 16 LEs                 ; Yes        ; |spi_oled|ssd1306_ctrl:ssd1306_ctrl_u0|send_data[6]  ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 4 LEs                ; 16 LEs                 ; Yes        ; |spi_oled|ssd1306_ctrl:ssd1306_ctrl_u0|send_data[7]  ;
+; 15:1               ; 3 bits    ; 30 LEs        ; 9 LEs                ; 21 LEs                 ; Yes        ; |spi_oled|ssd1306_ctrl:ssd1306_ctrl_u0|state_main[2] ;
+; 17:1               ; 3 bits    ; 33 LEs        ; 6 LEs                ; 27 LEs                 ; Yes        ; |spi_oled|ssd1306_ctrl:ssd1306_ctrl_u0|send_data[2]  ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |spi_oled|spi_master:my_spi_master|sequence_cntr     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------+
+; Source assignments for myram:myram_m0|altsyncram:memory_rtl_0|altsyncram_2dl1:auto_generated ;
++---------------------------------+--------------------+------+--------------------------------+
+; Assignment                      ; Value              ; From ; To                             ;
++---------------------------------+--------------------+------+--------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                              ;
++---------------------------------+--------------------+------+--------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |spi_oled ;
++----------------+-------+-------------------------------------------------+
+; Parameter Name ; Value ; Type                                            ;
++----------------+-------+-------------------------------------------------+
+; CLK_FRE        ; 50    ; Signed Integer                                  ;
+; SPI_FRE        ; 100   ; Signed Integer                                  ;
+; CLK_DIV        ; 25    ; Signed Integer                                  ;
++----------------+-------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ssd1306_ctrl:ssd1306_ctrl_u0 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; CLK_FRE        ; 50    ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: spi_master:my_spi_master ;
++----------------------+-------+----------------------------------------+
+; Parameter Name       ; Value ; Type                                   ;
++----------------------+-------+----------------------------------------+
+; CPOL                 ; 0     ; Signed Integer                         ;
+; FREE_RUNNING_SPI_CLK ; 0     ; Signed Integer                         ;
+; MOSI_DATA_WIDTH      ; 8     ; Signed Integer                         ;
+; WRITE_MSB_FIRST      ; 1     ; Signed Integer                         ;
+; MISO_DATA_WIDTH      ; 8     ; Signed Integer                         ;
+; READ_MSB_FIRST       ; 1     ; Signed Integer                         ;
++----------------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: spi_master:my_spi_master|edge_detect:ed_spi_clk ;
++------------------+----------+----------------------------------------------------------------+
+; Parameter Name   ; Value    ; Type                                                           ;
++------------------+----------+----------------------------------------------------------------+
+; WIDTH            ; 00000001 ; Unsigned Binary                                                ;
+; REGISTER_OUTPUTS ; 0        ; Unsigned Binary                                                ;
++------------------+----------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: spi_master:my_spi_master|edge_detect:ed_cmds[0] ;
++------------------+----------+----------------------------------------------------------------+
+; Parameter Name   ; Value    ; Type                                                           ;
++------------------+----------+----------------------------------------------------------------+
+; WIDTH            ; 00000001 ; Unsigned Binary                                                ;
+; REGISTER_OUTPUTS ; 0        ; Unsigned Binary                                                ;
++------------------+----------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: spi_master:my_spi_master|edge_detect:ed_cmds[1] ;
++------------------+----------+----------------------------------------------------------------+
+; Parameter Name   ; Value    ; Type                                                           ;
++------------------+----------+----------------------------------------------------------------+
+; WIDTH            ; 00000001 ; Unsigned Binary                                                ;
+; REGISTER_OUTPUTS ; 0        ; Unsigned Binary                                                ;
++------------------+----------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: spi_master:my_spi_master|reverse_vector:reverse_mosi_data ;
++----------------+--------+------------------------------------------------------------------------------+
+; Parameter Name ; Value  ; Type                                                                         ;
++----------------+--------+------------------------------------------------------------------------------+
+; WIDTH          ; 001000 ; Unsigned Binary                                                              ;
++----------------+--------+------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: spi_master:my_spi_master|reverse_vector:reverse_miso_data ;
++----------------+--------+------------------------------------------------------------------------------+
+; Parameter Name ; Value  ; Type                                                                         ;
++----------------+--------+------------------------------------------------------------------------------+
+; WIDTH          ; 001000 ; Unsigned Binary                                                              ;
++----------------+--------+------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: myram:myram_m0|altsyncram:memory_rtl_0      ;
++------------------------------------+----------------------------------------+----------------+
+; Parameter Name                     ; Value                                  ; Type           ;
++------------------------------------+----------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                      ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                     ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                    ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                     ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                    ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                      ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                              ; Untyped        ;
+; WIDTH_A                            ; 8                                      ; Untyped        ;
+; WIDTHAD_A                          ; 10                                     ; Untyped        ;
+; NUMWORDS_A                         ; 1024                                   ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                           ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                   ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                   ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                   ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                   ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                   ; Untyped        ;
+; WIDTH_B                            ; 8                                      ; Untyped        ;
+; WIDTHAD_B                          ; 10                                     ; Untyped        ;
+; NUMWORDS_B                         ; 1024                                   ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                 ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                 ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                 ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK0                                 ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                           ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                 ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                   ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                   ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                   ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                   ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                   ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                   ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                      ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                      ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                   ; Untyped        ;
+; BYTE_SIZE                          ; 8                                      ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                               ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                   ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                   ; Untyped        ;
+; INIT_FILE                          ; db/spi_oled.ram0_myram_7031274.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                 ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                      ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                 ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                 ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                 ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                 ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                        ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                        ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                  ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                  ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                      ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone IV E                           ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_2dl1                        ; Untyped        ;
++------------------------------------+----------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                   ;
++-------------------------------------------+----------------------------------------+
+; Name                                      ; Value                                  ;
++-------------------------------------------+----------------------------------------+
+; Number of entity instances                ; 1                                      ;
+; Entity Instance                           ; myram:myram_m0|altsyncram:memory_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                              ;
+;     -- WIDTH_A                            ; 8                                      ;
+;     -- NUMWORDS_A                         ; 1024                                   ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                           ;
+;     -- WIDTH_B                            ; 8                                      ;
+;     -- NUMWORDS_B                         ; 1024                                   ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                 ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                           ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                   ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                               ;
++-------------------------------------------+----------------------------------------+
+
+
++-----------------------------------------------------------------------------+
+; Port Connectivity Checks: "spi_master:my_spi_master|edge_detect:ed_cmds[1]" ;
++---------+--------+----------+-----------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                       ;
++---------+--------+----------+-----------------------------------------------+
+; falling ; Output ; Info     ; Explicitly unconnected                        ;
+; both    ; Output ; Info     ; Explicitly unconnected                        ;
++---------+--------+----------+-----------------------------------------------+
+
+
++-----------------------------------------------------------------------------+
+; Port Connectivity Checks: "spi_master:my_spi_master|edge_detect:ed_cmds[0]" ;
++---------+--------+----------+-----------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                       ;
++---------+--------+----------+-----------------------------------------------+
+; falling ; Output ; Info     ; Explicitly unconnected                        ;
+; both    ; Output ; Info     ; Explicitly unconnected                        ;
++---------+--------+----------+-----------------------------------------------+
+
+
++-----------------------------------------------------------------------------+
+; Port Connectivity Checks: "spi_master:my_spi_master|edge_detect:ed_spi_clk" ;
++------+--------+----------+--------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                          ;
++------+--------+----------+--------------------------------------------------+
+; both ; Output ; Info     ; Explicitly unconnected                           ;
++------+--------+----------+--------------------------------------------------+
+
+
++---------------------------------------------------------+
+; Port Connectivity Checks: "spi_master:my_spi_master"    ;
++------------+--------+----------+------------------------+
+; Port       ; Type   ; Severity ; Details                ;
++------------+--------+----------+------------------------+
+; spi_rd_cmd ; Input  ; Info     ; Explicitly unconnected ;
+; miso_data  ; Output ; Info     ; Explicitly unconnected ;
+; oe_pin     ; Output ; Info     ; Explicitly unconnected ;
+; miso_pin   ; Input  ; Info     ; Explicitly unconnected ;
++------------+--------+----------+------------------------+
+
+
++--------------------------------------------------------+
+; Port Connectivity Checks: "myram:myram_m0"             ;
++------------+-------+----------+------------------------+
+; Port       ; Type  ; Severity ; Details                ;
++------------+-------+----------+------------------------+
+; write_addr ; Input ; Info     ; Explicitly unconnected ;
+; write_data ; Input ; Info     ; Explicitly unconnected ;
++------------+-------+----------+------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Full Version
+    Info: Processing started: Fri Aug 18 22:42:10 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off spi_oled -c spi_oled
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /spi_oled/rtl/ssd1306_ctrl.sv
+    Info (12023): Found entity 1: ssd1306_ctrl
+Info (12021): Found 1 design units, including 1 entities, in source file /spi_oled/rtl/spi_master.sv
+    Info (12023): Found entity 1: spi_master
+Info (12021): Found 1 design units, including 1 entities, in source file /spi_oled/rtl/reverse_vector.sv
+    Info (12023): Found entity 1: reverse_vector
+Info (12021): Found 1 design units, including 1 entities, in source file /spi_oled/rtl/edge_detect.sv
+    Info (12023): Found entity 1: edge_detect
+Info (12021): Found 1 design units, including 1 entities, in source file /spi_oled/sim/myram_tb.sv
+    Info (12023): Found entity 1: myram_tb
+Info (12021): Found 1 design units, including 1 entities, in source file /spi_oled/rtl/spi_oled.v
+    Info (12023): Found entity 1: spi_oled
+Info (12021): Found 1 design units, including 1 entities, in source file /spi_oled/rtl/myram.sv
+    Info (12023): Found entity 1: myram
+Warning (10222): Verilog HDL Parameter Declaration warning at ssd1306_ctrl.sv(41): Parameter Declaration in module "ssd1306_ctrl" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at ssd1306_ctrl.sv(43): Parameter Declaration in module "ssd1306_ctrl" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at ssd1306_ctrl.sv(45): Parameter Declaration in module "ssd1306_ctrl" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at ssd1306_ctrl.sv(46): Parameter Declaration in module "ssd1306_ctrl" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at ssd1306_ctrl.sv(48): Parameter Declaration in module "ssd1306_ctrl" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at ssd1306_ctrl.sv(49): Parameter Declaration in module "ssd1306_ctrl" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at ssd1306_ctrl.sv(50): Parameter Declaration in module "ssd1306_ctrl" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Warning (10222): Verilog HDL Parameter Declaration warning at ssd1306_ctrl.sv(51): Parameter Declaration in module "ssd1306_ctrl" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List
+Info (12127): Elaborating entity "spi_oled" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at spi_oled.v(55): truncated value with size 32 to match size of target (10)
+Info (12128): Elaborating entity "myram" for hierarchy "myram:myram_m0"
+Info (12128): Elaborating entity "ssd1306_ctrl" for hierarchy "ssd1306_ctrl:ssd1306_ctrl_u0"
+Warning (10230): Verilog HDL assignment warning at ssd1306_ctrl.sv(168): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at ssd1306_ctrl.sv(206): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at ssd1306_ctrl.sv(225): truncated value with size 32 to match size of target (1)
+Info (12128): Elaborating entity "spi_master" for hierarchy "spi_master:my_spi_master"
+Info (12128): Elaborating entity "edge_detect" for hierarchy "spi_master:my_spi_master|edge_detect:ed_spi_clk"
+Info (12128): Elaborating entity "reverse_vector" for hierarchy "spi_master:my_spi_master|reverse_vector:reverse_mosi_data"
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "myram:myram_m0|memory_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1024
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 10
+        Info (286033): Parameter NUMWORDS_B set to 1024
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/spi_oled.ram0_myram_7031274.hdl.mif
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (12130): Elaborated megafunction instantiation "myram:myram_m0|altsyncram:memory_rtl_0"
+Info (12133): Instantiated megafunction "myram:myram_m0|altsyncram:memory_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "10"
+    Info (12134): Parameter "NUMWORDS_A" = "1024"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "10"
+    Info (12134): Parameter "NUMWORDS_B" = "1024"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/spi_oled.ram0_myram_7031274.hdl.mif"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_2dl1.tdf
+    Info (12023): Found entity 1: altsyncram_2dl1
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file F:/spi_oled/par/output_files/spi_oled.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 213 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 5 output pins
+    Info (21061): Implemented 198 logic cells
+    Info (21064): Implemented 8 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 12 warnings
+    Info: Peak virtual memory: 4682 megabytes
+    Info: Processing ended: Fri Aug 18 22:42:17 2023
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:06
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in F:/spi_oled/par/output_files/spi_oled.map.smsg.
+
+
